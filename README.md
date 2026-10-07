@@ -16,7 +16,7 @@
 **A film-noir portfolio you scroll like a short film.**
 A living WebGL eye, a timeline that fires a beam of light, and a name that shatters into metal.
 
-[![Live site](https://img.shields.io/badge/%E2%96%B6%20Live%20site-open%20the%20portfolio-f5b41f?style=for-the-badge&labelColor=070605)](https://portfolio-pi-five-3o7lwbg8u2.vercel.app/)
+[![Live site](https://img.shields.io/badge/%E2%96%B6%20Live%20site-open%20the%20portfolio-f5b41f?style=for-the-badge&labelColor=070605)](https://ajaykumar-ml.vercel.app/)
 
 </div>
 

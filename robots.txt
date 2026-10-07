@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ajaykumar-ml.vercel.app/sitemap.xml
