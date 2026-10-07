@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ajay Kumar — AI/ML Engineer</title>
+<meta name="description" content="Ajay Kumar — AI/ML engineer building healthcare and accessibility AI. NLP, LLMs, edge AI and research.">
+<meta name="theme-color" content="#070605">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23070605%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-size=%2718%27 text-anchor=%27middle%27 fill=%27%23f5b41f%27 font-family=%27Georgia,serif%27 font-style=%27italic%27%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/hero_cut3.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400;500&family=Noto+Sans+Tamil:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070605; --ink2:#0e0c0a; --paper:#efe7d6; --dim:#918979; --amber:#f5b41f; --amber2:#c98a0b;
+  --serif:'Fraunces',Georgia,serif; --mono:'JetBrains Mono',ui-monospace,monospace; --sans:'Inter',system-ui,sans-serif;
+  --bar:26px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--amber);color:var(--ink)}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.amber{color:var(--amber)}
+.wrap{padding:0 clamp(20px,6vw,110px)}
+
+/* ---------- film layers ---------- */
+.grain{position:fixed;inset:-6%;width:112%;height:112%;pointer-events:none;z-index:90;opacity:.11;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-5%,-2%)}80%{transform:translate(4%,5%)}100%{transform:translate(0,0)}}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:89;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.65) 100%)}
+/* the soft glow that follows the cursor: wide, many-stop falloff, fades in/out with the pointer */
+.spot{position:fixed;left:0;top:0;width:1000px;height:1000px;margin:-500px 0 0 -500px;pointer-events:none;z-index:88;will-change:transform,opacity;transform:translate3d(50vw,40vh,0);opacity:0;transition:opacity 1.4s ease;
+  background:radial-gradient(closest-side,rgba(245,180,31,.055) 0%,rgba(245,180,31,.048) 9%,rgba(245,180,31,.038) 20%,rgba(245,180,31,.028) 33%,rgba(245,180,31,.018) 47%,rgba(245,180,31,.01) 61%,rgba(245,180,31,.004) 76%,rgba(245,180,31,.001) 90%,rgba(245,180,31,0) 100%)}
+html.spot-on .spot{opacity:1}
+@media (hover:none){.spot{display:none}}
+.bar{position:fixed;left:0;right:0;height:var(--bar);background:#000;z-index:95;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,40px)}
+.bar.top{top:0}.bar.bot{bottom:0}
+.bar .mono{font-size:.625rem;color:#7b7467}
+.bar .rec{display:inline-flex;align-items:center;gap:8px}
+.bar .rec i{width:7px;height:7px;border-radius:50%;background:#e23b2e;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.15}}
+.progress{position:fixed;left:0;bottom:var(--bar);height:2px;width:100%;background:var(--amber);transform-origin:left;transform:scaleX(0);z-index:96}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:calc(var(--bar) + 14px);right:clamp(16px,3vw,40px);z-index:92;display:flex;gap:26px}
+nav a{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:color .3s;position:relative}
+nav a:hover{color:var(--amber)}
+.logo{position:fixed;top:calc(var(--bar) + 12px);left:clamp(16px,3vw,40px);z-index:92;font-family:var(--serif);font-style:italic;font-size:1.15rem}
+.logo b{color:var(--amber);font-weight:400}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;z-index:100;background:#000;display:grid;place-items:center}
+#loader .num{font-family:var(--serif);font-weight:300;font-size:clamp(6rem,22vw,20rem);line-height:1;color:var(--paper);letter-spacing:-.04em}
+#loader .cap{position:absolute;bottom:14%;left:0;right:0;text-align:center}
+#loader .ring{position:absolute;width:min(70vmin,520px);aspect-ratio:1;border:1px solid #2a251c;border-radius:50%}
+#loader .ring::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid transparent;border-top-color:var(--amber);animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- hero ---------- */
+#hero{position:relative;height:100vh;min-height:640px;overflow:hidden;display:grid;align-items:end;padding:0 0 9vh}
+/* the bottom of the hero dissolves into the page (eased, many stops) instead of ending in a hard line */
+#hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40vh;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(7,6,5,0) 0,rgba(7,6,5,.05) 12%,rgba(7,6,5,.16) 28%,rgba(7,6,5,.36) 46%,rgba(7,6,5,.62) 64%,rgba(7,6,5,.86) 82%,#070605 100%)}
+.hero-photo{position:absolute;right:clamp(0px,4vw,80px);bottom:0;height:94vh;aspect-ratio:1163/1352;z-index:1}
+.hero-photo .frame{position:absolute;inset:0;overflow:visible}
+.hero-photo .frame::after{content:"";position:absolute;left:8%;right:8%;bottom:-2%;height:22%;background:radial-gradient(closest-side,rgba(245,180,31,.16),transparent 75%);pointer-events:none}
+.hero-photo img.portrait{position:absolute;left:-17.2%;top:-14.79%;width:134.39%;height:129.59%;max-width:none}
+/* the colour grade and both drop-shadows are baked into the image (200px of padding holds the shadow's fall-off):
+   a live blurred shadow on a photo this size was re-computed by the GPU on every scroll frame of the hero scroll-out */
+/* the golden bloom when the eye shatters: the blur is baked into the image, so only its opacity animates */
+.hero-photo img.glow{position:absolute;left:-17.2%;top:-14.79%;width:134.39%;height:129.59%;max-width:none;pointer-events:none;opacity:var(--heroGlow,0);visibility:hidden}
+#hp.glow-on img.glow{visibility:visible;will-change:opacity}
+.hero-txt{position:relative;z-index:3;width:100%}
+.eyebrow{display:flex;gap:18px;align-items:center;margin-bottom:2.2vh}
+.eyebrow::before{content:"";width:46px;height:1px;background:var(--amber)}
+h1.name{font-family:var(--serif);font-weight:300;font-size:clamp(4.2rem,14.5vw,15rem);line-height:.86;letter-spacing:-.045em;text-transform:none}
+h1.name .ln{display:block;overflow:hidden;padding-bottom:.22em;margin-bottom:-.22em}
+/* the shattered-metal version of the name (shatter.js) is drawn over the real heading while you hover it */
+#nameFx{position:absolute;display:none;pointer-events:none;z-index:2}
+h1.name .ln:nth-child(2){font-style:italic;color:var(--amber);padding-left:.55em;font-weight:300}
+.ch{display:inline-block}
+.hero-sub{max-width:560px;margin-top:3vh;font-size:clamp(.95rem,1.2vw,1.1rem);color:#cfc6b2}
+.hero-sub em{font-family:var(--serif);color:var(--paper)}
+.scroll-cue{position:absolute;left:clamp(20px,6vw,110px);bottom:3.2vh;z-index:3;display:flex;align-items:center;gap:14px}
+.scroll-cue i{display:block;width:1px;height:46px;background:linear-gradient(var(--amber),transparent);animation:drop 2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-tag{position:absolute;right:clamp(20px,6vw,110px);bottom:3.2vh;z-index:3;text-align:right}
+
+/* ---------- manifesto ---------- */
+#manifesto{min-height:100vh;display:grid;place-items:center;padding:20vh 0}
+.manifesto-txt{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,5vw,4.6rem);line-height:1.3;letter-spacing:-.02em;max-width:1300px}
+.manifesto-txt .w{display:inline-block;opacity:.12;margin-right:.24em}
+.manifesto-txt .w.hl{font-style:italic;color:var(--amber)}
+.m-label{margin-bottom:5vh;display:block}
+
+/* ---------- section header ---------- */
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;padding-top:14vh;margin-bottom:6vh;border-top:1px solid #1d1912;padding-top:3vh}
+.sec-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,7vw,6.5rem);letter-spacing:-.035em;line-height:1}
+.sec-head h2 i{color:var(--amber);font-weight:300}
+
+/* ---------- work: horizontal scenes ---------- */
+#work{position:relative;background:linear-gradient(180deg,var(--ink) 0,#0a0907 6vh,var(--ink2) 16vh,var(--ink2) calc(100% - 16vh),#0a0907 calc(100% - 6vh),var(--ink) 100%)}
+#work .intro{padding-top:14vh} /* keep the .wrap side padding so the heading lines up with every other section */
+.h-pin{height:100vh;overflow:hidden;overflow:clip;display:flex;align-items:center} /* clip: focus can never scroll the pinned gallery sideways behind GSAP's back */
+.h-track{display:flex;gap:6vw;padding:0 clamp(20px,6vw,110px);will-change:transform;height:74vh}
+.scene{flex:0 0 min(78vw,1080px);display:grid;grid-template-columns:1.05fr .95fr;gap:0;border:1px solid #221d14;background:#0a0908;position:relative;overflow:hidden}
+.scene .shot{position:relative;overflow:hidden;background:#000}
+.scene .shot img{width:100%;height:112%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.5);transition:filter .6s, transform 1.2s cubic-bezier(.2,.7,.1,1);will-change:transform}
+.scene:hover .shot img{filter:grayscale(.3) contrast(1.1) brightness(.85);transform:scale(1.04)}
+.scene .shot .tint{position:absolute;inset:0;background:linear-gradient(200deg,rgba(245,180,31,.22),rgba(7,6,5,.55) 70%)}
+.scene .shot .num{position:absolute;left:22px;top:18px;font-family:var(--serif);font-size:clamp(4rem,9vw,8rem);line-height:1;font-weight:300;color:rgba(239,231,214,.9);mix-blend-mode:difference}
+.scene .art{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(circle at 30% 30%,#1f180a,#050403 70%)}
+.scene .info{padding:clamp(22px,3vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.scene h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.6vw,2.5rem);line-height:1.05;letter-spacing:-.02em;margin:10px 0 16px}
+.scene h3 i{color:var(--amber)}
+.scene p{color:#b7ae9a;font-size:.93rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tags span{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid #2b2519;padding:5px 10px;color:#9d947f}
+.link{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);border-bottom:1px solid transparent;transition:border-color .3s,gap .3s;width:max-content}
+.link:hover{border-color:var(--amber);gap:16px}
+.h-end{flex:0 0 22vw}
+
+/* ---------- the path: a film strip of chapters under the clock, one fixed-size projection screen ----------
+   Nothing here flips, grows or scrolls. The screen reserves the height of its tallest chapter
+   (all six sit stacked in one grid cell), so switching chapters never moves anything on the page. */
+#path{padding-bottom:28vh} /* room for the gradient that hands the page over to the paper section */
+.clockstage{position:relative;padding-top:7vh}
+.side-list{position:absolute;top:7vh;z-index:4;pointer-events:none}
+.side-list.left{left:0}
+.side-list.right{right:0;text-align:right}
+.side-list span{display:block;margin-bottom:.5rem}
+.side-list .rule{width:30px;height:1px;background:#3a3222;margin-top:.6rem}
+.side-list.right .rule{margin-left:auto}
+.clock-decor{position:absolute;top:0;left:0;right:0;height:40vh;overflow:hidden;pointer-events:none;z-index:1;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%,#000 64%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 26%,#000 64%,transparent 100%)} /* fades out instead of being clipped to a box */
+.clock-decor svg{width:100%;height:130%;display:block}
+.clock-decor .rim{fill:none;stroke:#241f14;stroke-width:1}
+.clock-decor .rim2{fill:none;stroke:#1a160e;stroke-width:1}
+.clock-decor .rim3{fill:none;stroke:#191409;stroke-width:1;stroke-dasharray:1 7}
+.clock-decor .tick{stroke:#332b1a;stroke-width:2}
+.clock-decor .tick .q{stroke:rgba(245,180,31,.45);stroke-width:2.5}
+.clock-decor .hub-ring{fill:none;stroke:rgba(245,180,31,.4);stroke-width:1.5}
+.clock-dynamic{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:visible}
+.clock-dynamic .hand{stroke:url(#handGrad);stroke-width:2.2;stroke-linecap:round}
+.clock-dynamic .hand-glow{stroke:url(#handGrad);stroke-opacity:.3;stroke-width:9;stroke-linecap:round}
+.clock-dynamic .hub{fill:#0c0a06;stroke:var(--amber);stroke-width:2}
+.clock-dynamic .hub-dot{fill:var(--amber)}
+.clock-dynamic .hub-cross line{stroke:rgba(245,180,31,.8);stroke-width:1.2}
+.beam-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+/* the pulsing ring around the hub is plain HTML so it animates on the compositor (an SVG
+   attribute animation would repaint the whole clock every frame) */
+.hub-halo{position:absolute;left:var(--hx,50%);top:var(--hy,90px);width:52px;height:52px;margin:-26px 0 0 -26px;pointer-events:none;z-index:2;opacity:calc(1 - var(--dock,0))}
+.hub-halo::after{content:"";position:absolute;inset:0;border:1px solid rgba(245,180,31,.6);border-radius:50%;animation:hubpulse 2.6s ease-in-out infinite}
+/* where the Sentinel Eye docks: a zero-size point at the clock's pivot that relic.js reads every frame */
+.eye-dock{position:absolute;left:var(--hx,50%);top:var(--hy,90px);width:2px;height:2px;margin:-1px 0 0 -1px;pointer-events:none}
+.clock-dynamic .hand,.clock-dynamic .hand-glow,.clock-dynamic .hub,.clock-dynamic .hub-dot,.clock-dynamic .hub-cross,.clock-decor .hub-ring{opacity:calc(1 - var(--dock,0))}
+@keyframes hubpulse{0%,100%{transform:scale(.7);opacity:.7}50%{transform:scale(1);opacity:0}}
+
+/* the film strip: six frames on a gentle arc, like the clock's own rim */
+.strip{position:relative;z-index:4;display:flex;align-items:flex-start;justify-content:center;gap:clamp(8px,1.3vw,16px);margin-top:clamp(130px,19vh,210px);padding:0 2vw}
+.cframe{flex:1 1 0;min-width:0;max-width:196px;appearance:none;display:flex;flex-direction:column;padding:0;text-align:left;cursor:pointer;position:relative;
+  background:rgba(9,7,5,.82);border:1px solid #241f14;color:var(--paper);font:inherit;opacity:.62;
+  transition:opacity .45s,border-color .45s,box-shadow .45s,transform .55s cubic-bezier(.2,.7,.1,1)}
+.cframe:nth-child(2),.cframe:nth-child(5){margin-top:22px}
+.cframe:nth-child(3),.cframe:nth-child(4){margin-top:38px}
+.cframe .sprock{display:block;height:12px;background:radial-gradient(circle 2.4px at 7px 6px,#070605 98%,transparent) 0 0/14px 12px repeat-x,#17120a;border-bottom:1px solid #1d1912}
+.fthumb{display:block;width:100%;aspect-ratio:20/11}
+.fcap{display:block;padding:10px 12px 14px}
+.fyr{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--amber)}
+.ftitle{display:block;margin-top:5px;font-family:var(--serif);font-size:1rem;line-height:1.18;letter-spacing:-.01em}
+.ftitle i{color:var(--amber)}
+.cframe:hover,.cframe:focus-visible{opacity:1;transform:translateY(-4px)}
+.cframe:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.cframe.lit{opacity:1;border-color:rgba(245,180,31,.55);box-shadow:0 10px 22px -10px rgba(0,0,0,.75)}
+.cframe.sel{opacity:1;border-color:var(--amber);box-shadow:0 10px 22px -10px rgba(0,0,0,.75),0 0 22px -8px rgba(245,180,31,.4)}
+.cframe.sel::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;background:var(--amber);box-shadow:0 0 12px rgba(245,180,31,.9)}
+
+/* the projection screen */
+.screen{position:relative;z-index:4;margin:30px auto 0;max-width:1120px;padding:clamp(22px,2.6vw,38px);display:grid;grid-template-columns:minmax(220px,36%) 1fr;gap:clamp(22px,3vw,44px);
+  background-origin:border-box;border:1px solid #241f14;
+  background-image:
+    linear-gradient(var(--amber),var(--amber)),linear-gradient(var(--amber),var(--amber)),
+    linear-gradient(var(--amber),var(--amber)),linear-gradient(var(--amber),var(--amber)),
+    linear-gradient(var(--amber),var(--amber)),linear-gradient(var(--amber),var(--amber)),
+    linear-gradient(var(--amber),var(--amber)),linear-gradient(var(--amber),var(--amber)),
+    linear-gradient(180deg,rgba(19,15,9,.94),rgba(9,7,5,.94));
+  background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%,0 0;
+  background-size:16px 1px,1px 16px,16px 1px,1px 16px,16px 1px,1px 16px,16px 1px,1px 16px,100% 100%;
+  background-repeat:no-repeat}
+.notch{position:absolute;top:-1px;left:0;width:96px;height:2px;margin-left:-48px;background:var(--amber);box-shadow:0 0 14px 1px rgba(245,180,31,.8);transition:transform .75s cubic-bezier(.3,.8,.2,1);will-change:transform;pointer-events:none}
+.notch::before{content:"";position:absolute;left:50%;bottom:2px;margin-left:-6px;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:7px solid var(--amber)}
+
+.s-art{position:relative;align-self:start;min-width:0}
+.s-art .box{position:relative;overflow:hidden;border:1px solid #2b2519;background:#0a0806}
+.s-art canvas{display:block;width:100%;aspect-ratio:16/10}
+.s-art .scan{position:absolute;top:0;bottom:0;left:0;width:38%;background:linear-gradient(90deg,transparent,rgba(245,180,31,.34),transparent);transform:translateX(-130%);pointer-events:none}
+.s-art .box.swap .scan{animation:artscan .8s cubic-bezier(.5,0,.2,1)}
+.s-art .box.swap canvas{animation:artdip .8s ease}
+@keyframes artscan{to{transform:translateX(330%)}}
+@keyframes artdip{0%,100%{opacity:1}35%,55%{opacity:.25}}
+.s-cap{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.s-cap .meta{display:flex;flex-direction:column;gap:2px}
+.s-nav{display:flex;gap:8px}
+.nb{appearance:none;width:38px;height:38px;display:grid;place-items:center;background:transparent;border:1px solid #2b2519;color:var(--amber);font-family:var(--mono);font-size:1rem;line-height:1;cursor:pointer;transition:background .3s,color .3s,border-color .3s,opacity .3s}
+.nb:hover:not(:disabled),.nb:focus-visible{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+.nb:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.nb:disabled{opacity:.3;cursor:default}
+
+.s-stack{display:grid;position:relative;min-width:0}
+.detail{grid-area:1/1;position:relative;display:flex;flex-direction:column;min-width:0;visibility:hidden;opacity:0;transition:opacity .3s,visibility 0s .3s}
+.detail.on{visibility:visible;opacity:1;transition:opacity .45s .1s,visibility 0s}
+.detail.noanim,.detail.noanim .rv{transition:none!important}
+.detail .ghost{position:absolute;right:-.02em;top:-.16em;font-family:var(--serif);font-weight:300;font-size:clamp(5rem,11vw,10rem);line-height:1;letter-spacing:-.05em;color:rgba(239,231,214,.05);pointer-events:none;user-select:none}
+.d-meta{display:flex;align-items:center;gap:14px;color:var(--amber)}
+.d-meta::before{content:"";width:28px;height:1px;background:var(--amber)}
+.detail h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,2.8vw,2.7rem);line-height:1.05;letter-spacing:-.02em;margin:12px 0 10px}
+.detail h3 i{color:var(--amber)}
+.d-org{color:var(--dim)}
+.detail ul{list-style:none;margin:18px 0 0}
+.detail li{position:relative;padding-left:26px;margin-bottom:.7rem;color:#b9b09b;font-size:.92rem;line-height:1.55}
+.detail li::before{content:"—";position:absolute;left:0;color:var(--amber)}
+.detail .tags{margin-top:auto;padding-top:16px}
+.rv{opacity:0;transform:translateX(var(--ox,0px));transition:opacity .25s,transform .25s}
+.detail.on .rv{opacity:1;transform:none;transition:opacity .6s calc(.12s + var(--i,0)*.07s),transform .85s cubic-bezier(.2,.7,.1,1) calc(.12s + var(--i,0)*.07s)}
+@media (min-width:901px) and (max-height:800px){
+  .side-list{display:none}
+  .strip{margin-top:clamp(84px,12vh,110px)}
+  .fthumb{aspect-ratio:20/8.5}
+  .fcap{padding:7px 10px 10px}
+  .ftitle{font-size:.92rem;margin-top:3px}
+  .cframe:nth-child(2),.cframe:nth-child(5){margin-top:16px}
+  .cframe:nth-child(3),.cframe:nth-child(4){margin-top:28px}
+  .screen{margin-top:20px;padding:20px 26px;gap:26px}
+  .s-art canvas{aspect-ratio:16/9}
+  .s-cap{margin-top:10px}
+  .detail h3{font-size:clamp(1.5rem,2.3vw,2.1rem);margin:8px 0 6px}
+  .detail ul{margin-top:12px}
+  .detail li{font-size:.88rem;margin-bottom:.5rem;line-height:1.5}
+  .detail .tags{padding-top:10px}
+  .detail .ghost{font-size:clamp(4rem,9vw,7.5rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  .detail,.detail .rv,.notch,.cframe,.s-art .scan{transition-duration:.01s!important;transition-delay:0s!important}
+  .s-art .box.swap .scan,.s-art .box.swap canvas,.hub-halo{animation:none!important}
+}
+
+/* ---------- numbers ---------- */
+#numbers{background:var(--ink2);padding:16vh 0 32vh}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #221d14;border-left:1px solid #221d14}
+.stat{padding:6vh 2.2vw 5vh;border-right:1px solid #221d14;border-bottom:1px solid #221d14;position:relative;overflow:hidden;transition:background .5s}
+.stat::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.2,.7,.1,1)}
+.stat:hover{background:radial-gradient(90% 90% at 20% 0%,rgba(245,180,31,.10),transparent 70%)}
+.stat:hover::after{transform:scaleX(1)}
+.stat .big{font-family:var(--serif);font-weight:300;font-size:clamp(3.6rem,8.5vw,8.5rem);line-height:1;letter-spacing:-.05em;display:flex;align-items:flex-start}
+.stat .big sup{font-size:.36em;color:var(--amber);margin-left:.06em;line-height:1.1}
+.stat h3{margin-top:1.2rem;font-family:var(--serif);font-weight:400;font-size:1.25rem;letter-spacing:-.01em}
+.stat p{margin-top:.4rem;color:var(--dim);font-size:.86rem;max-width:280px}
+
+/* ---------- craft: multi-row scroll reel ---------- */
+#stack{padding:14vh 0 10vh;overflow:hidden}
+.reel{margin-top:2vh}
+.reel-row{position:relative;padding:1.6vh 0 .6vh;border-top:1px solid #1a160e}
+.reel-row .lab{position:absolute;left:clamp(20px,6vw,110px);top:1.2vh;z-index:2;color:var(--amber);opacity:.85}
+.reel-row .lab b{color:var(--dim);font-weight:300;margin-left:8px}
+.rail{display:flex;width:max-content;white-space:nowrap;will-change:transform;padding-top:1.1rem}
+.copy{display:flex;flex:none}
+.sk{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,min(4.2vw,6.6vh),4.6rem);letter-spacing:-.035em;line-height:1.05;padding-right:.55em;position:relative;cursor:default;
+  --p:0;color:rgba(239,231,214,calc(.3 + var(--p)*.7));
+  -webkit-text-stroke:1px rgba(239,231,214,calc(.4 + var(--p)*.5));transition:color .25s}
+.reel-row:nth-child(even) .sk{color:rgba(245,180,31,calc(0 + var(--p)));-webkit-text-stroke:1px rgba(239,231,214,calc(.5 + var(--p)*.4))}
+.sk::after{content:"✦";position:absolute;right:.12em;top:50%;transform:translateY(-50%);font-size:.35em;color:var(--amber);-webkit-text-stroke:0;opacity:.7}
+.reel-row:nth-child(odd) .sk{font-style:italic}
+.sk.hot{color:var(--amber)!important;-webkit-text-stroke:0;text-shadow:0 0 40px rgba(245,180,31,.45)}
+.reel-row::before,.reel-row::after{content:"";position:absolute;top:0;bottom:0;width:12vw;z-index:1;pointer-events:none}
+.reel-row::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+.reel-row::after{right:0;background:linear-gradient(-90deg,var(--ink),transparent)}
+.reel-end{border-top:1px solid #1a160e}
+.reel-hint{margin-top:4vh;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* ---------- contact ---------- */
+#contact{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:18vh 0 12vh;background:radial-gradient(70% 60% at 50% 100%,rgba(245,180,31,.16),transparent 70%)}
+/* the second portrait stands at the right of the closing section, looking toward the headline; it dissolves into the dark at its feet */
+.contact-photo{position:absolute;right:clamp(0px,5vw,110px);bottom:0;height:min(92vh,980px);width:auto;max-width:none;z-index:1;pointer-events:none;
+  filter:grayscale(.82) sepia(.32) hue-rotate(-10deg) saturate(1.35) contrast(1.15) brightness(.96) drop-shadow(0 0 16px rgba(245,180,31,.22));
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 58%,rgba(0,0,0,.6) 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 58%,rgba(0,0,0,.6) 78%,transparent 100%)}
+#contact .wrap{position:relative;z-index:10}
+#contact h2{font-family:var(--serif);font-weight:300;font-size:clamp(3.2rem,12.5vw,13rem);line-height:.88;letter-spacing:-.05em}
+#contact h2 .ln{display:block;overflow:hidden;padding-bottom:.2em;margin-bottom:-.2em}
+#contact h2 .ln span{display:block}
+#contact h2 i{color:var(--amber)}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:8vh}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 32px;font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--amber);color:var(--amber);position:relative;overflow:hidden;transition:color .4s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--amber);transform:translateY(101%);transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1}
+.btn:hover{color:var(--ink)}.btn:hover::before{transform:none}
+.btn.solid{background:var(--amber);color:var(--ink)}
+.btn.solid::before{background:var(--paper)}
+.toast{position:fixed;left:50%;bottom:calc(var(--bar) + 30px);transform:translate(-50%,30px);opacity:0;z-index:97;background:var(--amber);color:var(--ink);padding:12px 22px;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transition:.5s cubic-bezier(.2,.7,.1,1)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.mail{display:inline-block;margin-top:5vh;font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3vw,2.4rem);border-bottom:1px solid #3a3222;transition:color .3s,border-color .3s}
+.mail:hover{color:var(--amber);border-color:var(--amber)}
+.status{display:inline-flex;align-items:center;gap:10px;margin-bottom:5vh}
+.status i{width:8px;height:8px;border-radius:50%;background:#5bd36b;box-shadow:0 0 12px #5bd36b;animation:blink 2s infinite}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:14vh;padding-bottom:calc(var(--bar) + 10px)}
+
+
+/* ---------- relic (flowing 3D crystal) ---------- */
+#relic{position:fixed;inset:0;width:100vw;height:100vh;z-index:5;pointer-events:none;display:none}
+html.has-relic #relic{display:block}
+html.relic-hover,html.relic-hover *{cursor:grab!important}
+html.relic-drag,html.relic-drag *{cursor:grabbing!important;user-select:none!important}
+.relic-hint{position:fixed;left:clamp(16px,3vw,40px);bottom:calc(var(--bar) + 16px);z-index:93;display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);background:rgba(7,6,5,.88);border:1px solid #2b2519;padding:8px 14px;opacity:0;transition:opacity .8s;pointer-events:none}
+html.has-relic .relic-hint.on{opacity:1}
+.relic-hint.off{opacity:.55!important}
+.relic-hint.far{opacity:0!important}
+/* ---------- the theme: a spinning record in the corner, with a deck of controls ---------- */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.player{position:fixed;right:clamp(14px,2.4vw,34px);bottom:calc(var(--bar) + 14px);z-index:94;display:flex;align-items:center;gap:8px}
+.disc{position:relative;width:64px;height:64px;flex:none;padding:0;border:0;border-radius:50%;background:none;color:#050403;cursor:pointer;transition:transform .45s cubic-bezier(.2,.7,.1,1)}
+.disc:hover{transform:scale(1.07)}
+.disc:focus-visible,.deck-toggle:focus-visible,.pbtn:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.disc .ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
+.disc .trk{fill:none;stroke:rgba(245,180,31,.16);stroke-width:2}
+.disc .prg{fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-dasharray:188.5;stroke-dashoffset:188.5}
+.disc .vinyl{position:absolute;inset:5px;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,var(--amber) 0 26%,#c98a0b 26% 28%,transparent 28.5%),
+    repeating-radial-gradient(circle at 50% 50%,#0c0a08 0 1.4px,#181310 1.4px 2.6px);
+  box-shadow:0 8px 22px -4px rgba(0,0,0,.75),inset 0 0 0 1px #2c2418;animation:spin 4.5s linear infinite;animation-play-state:paused}
+.disc::after{content:"";position:absolute;inset:5px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 20deg,transparent 0 8%,rgba(255,240,205,.17) 14%,transparent 24% 52%,rgba(255,240,205,.1) 60%,transparent 70%)}
+.player[data-state=playing] .disc .vinyl{animation-play-state:running}
+.disc .ico{position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;fill:currentColor;pointer-events:none;z-index:1}
+.disc .ico-pause,.pbtn .i-pause,.pbtn .i-mutedx{display:none}
+.player[data-state=playing] .disc .ico-play,.player[data-state=playing] .pbtn .i-play{display:none}
+.player[data-state=playing] .disc .ico-pause,.player[data-state=playing] .pbtn .i-pause{display:block}
+.player[data-muted="1"] .pbtn .i-vol{display:none}
+.player[data-muted="1"] .pbtn .i-mutedx{display:block}
+
+.deck-toggle{width:34px;height:34px;display:grid;place-items:center;padding:0;border-radius:50%;background:rgba(9,7,5,.9);border:1px solid #2b2519;color:var(--amber);cursor:pointer;transition:background .3s,color .3s}
+.deck-toggle:hover,.player.open .deck-toggle{background:var(--amber);color:var(--ink)}
+.deck-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.deck{position:absolute;right:calc(100% + 8px);bottom:2px;width:min(300px,calc(100vw - 120px));padding:14px 16px 12px;background:rgba(9,7,5,.94);border:1px solid #2b2519;
+  opacity:0;visibility:hidden;transform:translateX(10px);transition:opacity .3s,transform .45s cubic-bezier(.2,.7,.1,1),visibility 0s .3s}
+.deck::before{content:"";position:absolute;top:0;bottom:0;left:100%;width:8px} /* fills exactly the 8px gap so hover survives the move from button to panel, without covering the button */
+.player.open .deck,.player:has(:focus-visible) .deck{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+@media (hover:hover){.player:hover .deck{opacity:1;visibility:visible;transform:none;transition-delay:0s}}
+.deck-title{display:block;margin-bottom:12px;font-size:.7rem;letter-spacing:.12em;color:var(--dim)}
+.deck-row{display:flex;align-items:center;gap:10px}
+.deck-row+.deck-row{margin-top:12px}
+.deck .mono{font-size:.7rem;letter-spacing:.08em}
+.pbtn{width:34px;height:34px;flex:none;display:grid;place-items:center;padding:0;background:transparent;border:1px solid #2b2519;color:var(--amber);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.pbtn:hover{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+.pbtn svg{width:16px;height:16px;fill:currentColor}
+.player input[type=range]{-webkit-appearance:none;appearance:none;height:18px;margin:0;background:transparent;cursor:pointer;--p:0%}
+.player input[type=range]::-webkit-slider-runnable-track{height:3px;background:linear-gradient(90deg,var(--amber) var(--p),#2b2519 var(--p))}
+.player input[type=range]::-moz-range-track{height:3px;background:#2b2519}
+.player input[type=range]::-moz-range-progress{height:3px;background:var(--amber)}
+.player input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;margin-top:-4.5px;border:0;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px rgba(245,180,31,.18)}
+.player input[type=range]::-moz-range-thumb{width:12px;height:12px;border:0;border-radius:50%;background:var(--amber)}
+.player input[type=range]:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.vol{flex:1;min-width:0}.vol input,.seek input{width:100%}.seek input{flex:1;min-width:0}
+.disc-hint{position:absolute;right:0;bottom:calc(100% + 10px);white-space:nowrap;padding:7px 12px;background:rgba(7,6,5,.92);border:1px solid #2b2519;color:var(--amber);font-size:.7rem;letter-spacing:.12em;
+  opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .6s,transform .6s cubic-bezier(.2,.7,.1,1)}
+.player.hint .disc-hint{opacity:1;transform:none}
+.player.hint .disc .trk{animation:ringping 1.8s ease-in-out infinite}
+@keyframes ringping{0%,100%{stroke:rgba(245,180,31,.16)}50%{stroke:rgba(245,180,31,.75)}}
+@media (max-width:900px){.player{right:12px;bottom:calc(var(--bar) + 12px)}.disc{width:54px;height:54px}.disc-hint{display:none}}
+@media (prefers-reduced-motion:reduce){.disc .vinyl,.player.hint .disc .trk{animation:none}}
+/* auto 'lite' mode (set by the frame-rate watchdog on machines that can't hold ~35fps): drop the decorative full-screen layers */
+html.lite .grain,html.lite .spot{display:none}
+/* scripts failed to load: nothing is pinned or scrubbed, so lay content out as plain scrollable blocks */
+html.nogsap .h-pin{height:auto;overflow-x:auto;padding:6vh 0;display:block}
+html.nogsap .h-track{height:auto;padding-bottom:2vh}
+html.nogsap .scene{min-height:60vh}
+html.nogsap .rail{width:auto;white-space:normal;flex-wrap:wrap;padding-top:2.6rem}
+html.nogsap .copy{flex:0 1 auto;min-width:0;flex-wrap:wrap;padding:0 clamp(20px,6vw,110px)}
+html.nogsap .reel-row::before,html.nogsap .reel-row::after{display:none}
+html.nogsap .sk{font-size:clamp(1.4rem,3vw,2.4rem)}
+html.nogsap .h-end{display:none}
+.relic-hint b{color:var(--paper);font-weight:400}
+@media (max-width:900px){.relic-hint{display:none}}
+
+/* ---------- thumbnails ---------- */
+.scene .shot{min-height:260px}
+.thumb{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scene .shot .tint{background:linear-gradient(200deg,rgba(245,180,31,.05),rgba(7,6,5,.35) 90%);pointer-events:none}
+.scene .shot .num{mix-blend-mode:normal;color:rgba(239,231,214,.92);text-shadow:0 2px 24px #000;z-index:2}
+.scene .shot{will-change:clip-path}
+
+/* ---------- numbers: bone-paper window (colour-field transition) ---------- */
+#numbers{color:#14110b;position:relative}
+#numbers .mono{color:#7a705c}
+#numbers .sec-head{border-top-color:#c8bba3}
+#numbers .sec-head h2 i{color:#b06f00}
+#numbers .stats{border-top-color:#c8bba3;border-left-color:#c8bba3}
+#numbers .stat{border-right-color:#c8bba3;border-bottom-color:#c8bba3}
+#numbers .stat:hover{background:radial-gradient(90% 90% at 20% 0%,rgba(176,111,0,.12),transparent 70%)}
+#numbers .stat::after{background:#b06f00}
+#numbers .stat .big sup{color:#b06f00}
+#numbers .stat h3{color:#14110b}
+#numbers .stat p{color:#696151}
+
+
+/* ---------- layering: the eye lives BEHIND every piece of text ---------- */
+.wrap,#hpin,#stackpin{position:relative;z-index:10}
+.hero-txt{z-index:10}
+.scroll-cue,.hero-tag{z-index:10}
+/* the paper rises out of the dark: 26vh of eased gradient (ink -> deep amber -> gold -> bone) above the section,
+   so there is no edge anywhere, only a slow dawn behind the heading */
+#numbers .paper{position:absolute;top:-26vh;left:0;right:0;bottom:0;z-index:0; /* 26vh of dawn above the section and 26vh of dusk below it */
+ 
+  background:linear-gradient(180deg,#070605 0,#0b0906 2vh,#150f08 5vh,#241a0d 8vh,#3b2c14 11vh,#5a4522 14vh,#7d6538 17vh,#a28a55 20vh,#c6b183 22.5vh,#ddd0b3 24.5vh,#e6dcc9 26vh,
+    #e6dcc9 calc(100% - 26vh),#ddd0b3 calc(100% - 24.5vh),#c6b183 calc(100% - 22.5vh),#a28a55 calc(100% - 20vh),#7d6538 calc(100% - 17vh),#5a4522 calc(100% - 14vh),
+    #3b2c14 calc(100% - 11vh),#241a0d calc(100% - 8vh),#150f08 calc(100% - 5vh),#0b0906 calc(100% - 2vh),#070605 100%)}
+#numbers{background:transparent!important}
+.ca-flash{position:fixed;inset:0;pointer-events:none;z-index:86;opacity:0;will-change:opacity;
+  /* red/cyan edge flash of the shockwave: plain gradients (cheap to paint) instead of big blurred box-shadows */
+  background:linear-gradient(90deg,rgba(255,30,80,.5),rgba(255,30,80,.14) 7%,transparent 18%,transparent 82%,rgba(0,210,255,.14) 93%,rgba(0,210,255,.5)),
+    linear-gradient(180deg,rgba(255,30,80,.24),transparent 12%,transparent 88%,rgba(0,210,255,.24))}
+.scene .shot .num{text-shadow:0 2px 24px #000}
+.sk.hot{text-shadow:0 0 40px rgba(245,180,31,.45)}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  nav{display:none}
+  .hero-photo{width:auto;right:-6vw;height:58vh;opacity:.6}
+  h1.name .ln:nth-child(2){padding-left:.2em}
+  .h-pin{height:auto;display:block;padding:8vh 0}
+  .h-track{flex-direction:column;height:auto;gap:28px}
+  .scene{flex:none;width:100%;grid-template-columns:1fr}
+  .scene .shot{height:240px}
+  .h-end{display:none}
+  .clock-decor,.clock-dynamic,.beam-canvas,.hub-halo,.eye-dock,.side-list{display:none}
+  .clockstage{padding-top:0}
+  .strip{margin-top:0;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 16px;scrollbar-width:none}
+  .strip::-webkit-scrollbar{display:none}
+  .cframe{flex:0 0 164px;max-width:none;margin-top:0!important;scroll-snap-align:center;opacity:.7}
+  .screen{grid-template-columns:1fr;margin-top:16px;gap:22px}
+  .notch{display:none}
+  .stats{grid-template-columns:1fr 1fr}
+  .hero-tag{display:none}
+  .contact-photo{right:-14vw;height:62vh;opacity:.62}
+}
+@media (prefers-reduced-motion:reduce){.grain{animation:none}.scroll-cue i{animation:none}}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="ring"></div>
+  <div class="num" id="lnum">3</div>
+  <div class="cap mono">Loading reel · Ajay Kumar</div>
+</div>
+
+<div class="grain"></div><div class="vignette"></div><div class="spot"></div>
+<canvas id="relic" aria-hidden="true"></canvas>
+<div class="ca-flash" id="caFlash" aria-hidden="true"></div>
+<div class="relic-hint" id="relicHint">The eye watches · Drag to spin · Click to shatter · <span>×<b id="relicCount">0</b></span></div>
+<div class="bar top"><span class="mono rec"><i></i>REC &nbsp; SCENE <b id="scn" style="font-weight:400">01</b>/06</span><span class="mono" id="tc">00:00:00:00</span></div>
+<div class="bar bot"><span class="mono">Chennai · Taiwan</span><span class="mono">AK — Portfolio 2026</span></div>
+<div class="progress" id="prog"></div>
+
+<a class="logo" href="#hero">A<b>.</b>K</a>
+<nav>
+  <a href="#manifesto">Story</a><a href="#work">Work</a><a href="#path">Path</a><a href="#stack">Craft</a><a href="#contact">Contact</a>
+</nav>
+
+<main>
+<!-- 01 HERO -->
+<section id="hero" data-scene="01">
+  <div class="hero-photo" id="hp">
+    <div class="frame"><img class="glow" src="assets/hero_glow2.webp" width="1563" height="1752" alt="" aria-hidden="true"><img class="portrait" src="assets/hero_cut3.webp" width="1563" height="1752" decoding="async" alt="Portrait of Ajay Kumar, background removed, wearing a suit and sunglasses"></div>
+  </div>
+  <div class="hero-txt wrap">
+    <div class="eyebrow mono amber" id="eyebrow">AI / ML Engineer · NLP &amp; LLM Research</div>
+    <h1 class="name" id="name" aria-label="Ajay Kumar"><span class="ln" data-split>Ajay</span><span class="ln" data-split>Kumar</span></h1>
+    <canvas id="nameFx" aria-hidden="true"></canvas>
+    <p class="hero-sub" id="hsub">I build AI systems that solve <em>real problems</em> — not just benchmarks. Healthcare, accessibility and low-resource language AI.</p>
+  </div>
+  <div class="scroll-cue mono"><i></i>Scroll to roll</div>
+  <div class="hero-tag mono">Research Scholar<br>National Chung Cheng Univ., Taiwan</div>
+</section>
+
+<!-- 02 MANIFESTO -->
+<section id="manifesto" data-scene="02">
+  <div class="wrap">
+    <span class="mono m-label amber">— Chapter I · The premise</span>
+    <p class="manifesto-txt" id="mtxt">Most models are graded on benchmarks. Real people live in the gaps — a <b class="hl-src">Tamil-speaking patient</b>, a <b class="hl-src">visually impaired commuter</b>, a <b class="hl-src">student who learns differently</b>. I build AI for the gaps, where research rigor meets production constraints.</p>
+  </div>
+</section>
+
+<!-- 03 WORK -->
+<section id="work" data-scene="03">
+  <div class="wrap intro">
+    <div class="sec-head"><h2>Selected <i>scenes</i></h2><span class="mono">05 projects · scroll →</span></div>
+  </div>
+  <div class="h-pin" id="hpin">
+    <div class="h-track" id="htrack">
+
+      <article class="scene">
+        <div class="shot"><canvas class="thumb" data-art="adapteval" aria-hidden="true"></canvas><div class="tint"></div><span class="num">01</span></div>
+        <div class="info">
+          <div>
+            <span class="mono amber">Research · Jun 2026</span>
+            <h3>AdaptEval — <i>behavioral testing</i> for low-resource Tamil medical NLP</h3>
+            <p>A behavioral testing suite evaluating XLM-RoBERTa, mBERT, IndicBERT and MuRIL on a Tamil medical department-routing task. It probes robustness across dialectal and code-mixed Tamil — where standard benchmarks fall short. Written up as an IEEE JBHI-format paper; framework and datasets open-sourced.</p>
+            <div class="tags"><span>NLP</span><span>Evaluation</span><span>Healthcare</span><span>IEEE JBHI</span><span>Open source</span></div>
+          </div>
+          <a class="link" href="https://github.com/AjayKumar-repo/AdaptEval" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="shot"><canvas class="thumb" data-art="edumind" aria-hidden="true"></canvas><div class="tint"></div><span class="num">02</span></div>
+        <div class="info">
+          <div>
+            <span class="mono amber">LLM + RAG · Jan–Mar 2025</span>
+            <h3>EduMind — <i>adaptive learning</i> powered by LLMs</h3>
+            <p>The Gen2 Education System: a personalised learning platform combining ML and NLP with a RAG pipeline (ChromaDB + MongoDB) and LLM reasoning for adaptive, context-aware recommendations. Presented at an IEEE conference, Aug 2025.</p>
+            <div class="tags"><span>LLMs</span><span>RAG</span><span>ChromaDB</span><span>MongoDB</span><span>IEEE talk</span></div>
+          </div>
+          <a class="link" href="https://github.com/AjayKumar-repo/EduMind" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="shot"><canvas class="thumb" data-art="glasses" aria-hidden="true"></canvas><div class="tint"></div><span class="num">03</span></div>
+        <div class="info">
+          <div>
+            <span class="mono amber">Edge AI · Apr–Jun 2024</span>
+            <h3>Smart glasses <i>for the blind</i></h3>
+            <p>An assistive wearable running YOLOv4 object detection on an ESP32-CAM microcontroller. Optimised for real-time inference under tight memory and compute limits — live object recognition with low-latency audio feedback and no cloud dependency.</p>
+            <div class="tags"><span>YOLOv4</span><span>ESP32-CAM</span><span>Edge AI</span><span>Accessibility</span></div>
+          </div>
+          <span class="mono" style="color:#6e675a">Hardware + model optimisation</span>
+        </div>
+      </article>
+
+      <article class="scene">
+        <div class="shot"><canvas class="thumb" data-art="mind" aria-hidden="true"></canvas><div class="tint"></div><span class="num">04</span></div>
+        <div class="info">
+          <div>
+            <span class="mono amber">Research · Jul 2026 — Present</span>
+            <h3>Systematic review — <i>AI for ADHD</i> &amp; mental health</h3>
+            <p>Under faculty supervision at National Chung Cheng University, synthesising 40+ papers from LREC, IJCAI, EMNLP, ICONIP, SIGKDD and NLDB into a structured dataset by year and venue, with a research log distilling methodological trends in ADHD detection and intervention.</p>
+            <div class="tags"><span>Literature review</span><span>Mental health AI</span><span>NLP</span></div>
+          </div>
+          <span class="mono" style="color:#6e675a">Ongoing · TEEP programme</span>
+        </div>
+      </article>
+      <article class="scene">
+        <div class="shot"><canvas class="thumb" data-art="news" aria-hidden="true"></canvas><div class="tint"></div><span class="num">05</span></div>
+        <div class="info">
+          <div>
+            <span class="mono amber">NLP · Aug 2024</span>
+            <h3>Fake news <i>detection</i> with machine learning</h3>
+            <p>An NLP classification pipeline using logistic regression and decision trees, with carefully optimised text preprocessing, reaching 99.43% accuracy.</p>
+            <div class="tags"><span>NLP</span><span>Scikit-learn</span><span>Classification</span></div>
+          </div>
+          <span class="mono" style="color:#6e675a">Text preprocessing · model evaluation</span>
+        </div>
+      </article>
+      <div class="h-end"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PATH -->
+<section id="path" data-scene="04">
+  <div class="wrap">
+    <div class="sec-head"><h2>The <i>path</i></h2><span class="mono">Chapter III</span></div>
+    <div class="clockstage" id="clockstage">
+      <div class="side-list left mono">
+        <span>RESEARCH</span><span>INTERNSHIPS</span><span>TALKS</span><span>WORKSHOPS</span><span>EDUCATION</span>
+        <div class="rule"></div>
+      </div>
+
+      <div class="clock-decor" aria-hidden="true">
+        <svg viewBox="0 0 1000 400">
+          <defs>
+            <radialGradient id="clockGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5b41f" stop-opacity=".12"/>
+              <stop offset="40%" stop-color="#f5b41f" stop-opacity=".06"/>
+              <stop offset="75%" stop-color="#f5b41f" stop-opacity=".016"/>
+              <stop offset="100%" stop-color="#f5b41f" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="500" cy="90" r="320" fill="url(#clockGlow)"/>
+          <circle class="rim" cx="500" cy="90" r="460"/>
+          <circle class="rim2" cx="500" cy="90" r="430"/>
+          <circle class="rim3" cx="500" cy="90" r="400"/>
+          <g class="tick" id="clockTicks"></g>
+          <circle class="hub-ring" cx="500" cy="90" r="16"/>
+        </svg>
+      </div>
+      <canvas class="beam-canvas" id="beamCanvas" aria-hidden="true"></canvas>
+      <svg class="clock-dynamic" id="clockDynamic" aria-hidden="true">
+        <defs>
+          <linearGradient id="handGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#f5b41f"/>
+            <stop offset=".55" stop-color="#f5b41f" stop-opacity=".7"/>
+            <stop offset="1" stop-color="#f5b41f" stop-opacity=".12"/>
+          </linearGradient>
+        </defs>
+        <line class="hand-glow" id="clockHandGlow" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="hand" id="clockHand" x1="0" y1="0" x2="0" y2="0"/>
+        <g class="hub-cross" id="clockHubCross">
+          <line x1="-15" y1="0" x2="-7" y2="0"/><line x1="15" y1="0" x2="7" y2="0"/>
+          <line x1="0" y1="-15" x2="0" y2="-7"/><line x1="0" y1="15" x2="0" y2="7"/>
+        </g>
+        <circle class="hub" id="clockHub" cx="0" cy="0" r="9"/>
+        <circle class="hub-dot" id="clockHubDot" cx="0" cy="0" r="3"/>
+      </svg>
+      <div class="hub-halo" aria-hidden="true"></div>
+      <span class="eye-dock" id="eyeDock" aria-hidden="true"></span>
+
+      <div class="strip" id="strip" role="tablist" aria-label="Career chapters">
+        <button class="cframe" id="tab0" role="tab" aria-selected="false" aria-controls="pane0" tabindex="-1" data-key="path-edu" type="button">
+          <span class="sprock" aria-hidden="true"></span>
+          <canvas class="fthumb" data-art="path-edu" aria-hidden="true"></canvas>
+          <span class="fcap"><span class="fyr">2023—27</span><span class="ftitle">B.Tech <i>AI &amp; ML</i></span></span>
+        </button>
+        <button class="cframe" id="tab1" role="tab" aria-selected="false" aria-controls="pane1" tabindex="-1" data-key="path-corp" type="button">
+          <span class="sprock" aria-hidden="true"></span>
+          <canvas class="fthumb" data-art="path-corp" aria-hidden="true"></canvas>
+          <span class="fcap"><span class="fyr">APR 2024</span><span class="ftitle">AI Intern <i>Cognizant</i></span></span>
+        </button>
+        <button class="cframe" id="tab2" role="tab" aria-selected="false" aria-controls="pane2" tabindex="-1" data-key="path-talk" type="button">
+          <span class="sprock" aria-hidden="true"></span>
+          <canvas class="fthumb" data-art="path-talk" aria-hidden="true"></canvas>
+          <span class="fcap"><span class="fyr">FEB 2025</span><span class="ftitle">Workshop <i>Presenter</i></span></span>
+        </button>
+        <button class="cframe" id="tab3" role="tab" aria-selected="false" aria-controls="pane3" tabindex="-1" data-key="path-startup" type="button">
+          <span class="sprock" aria-hidden="true"></span>
+          <canvas class="fthumb" data-art="path-startup" aria-hidden="true"></canvas>
+          <span class="fcap"><span class="fyr">JUL 2025</span><span class="ftitle">AI Intern <i>Rasa.AI Labs</i></span></span>
+        </button>
+        <button class="cframe" id="tab4" role="tab" aria-selected="false" aria-controls="pane4" tabindex="-1" data-key="path-mic" type="button">
+          <span class="sprock" aria-hidden="true"></span>
+          <canvas class="fthumb" data-art="path-mic" aria-hidden="true"></canvas>
+          <span class="fcap"><span class="fyr">AUG 2025</span><span class="ftitle">Speaker <i>IEEE Conf.</i></span></span>
+        </button>
+        <button class="cframe sel lit" id="tab5" role="tab" aria-selected="true" aria-controls="pane5" tabindex="0" data-key="path-globe" type="button">
+          <span class="sprock" aria-hidden="true"></span>
+          <canvas class="fthumb" data-art="path-globe" aria-hidden="true"></canvas>
+          <span class="fcap"><span class="fyr">AUG 2026</span><span class="ftitle">Research Intern <i>TEEP</i></span></span>
+        </button>
+      </div>
+
+      <div class="screen" id="screen">
+        <span class="notch" id="notch" aria-hidden="true"></span>
+        <div class="s-art">
+          <div class="box"><canvas id="screenArt" data-art="path-globe" aria-hidden="true"></canvas><span class="scan" aria-hidden="true"></span></div>
+          <div class="s-cap">
+            <div class="meta" aria-live="polite"><span class="mono amber" id="sCount">Chapter 06 / 06</span><span class="mono" id="sType">Research</span></div>
+            <div class="s-nav">
+              <button class="nb" id="prevBtn" type="button" aria-label="Previous chapter">←</button>
+              <button class="nb" id="nextBtn" type="button" aria-label="Next chapter">→</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="s-stack">
+          <article class="detail" id="pane0" role="tabpanel" aria-labelledby="tab0" data-type="Education">
+            <span class="ghost" aria-hidden="true">2023</span>
+            <p class="rv d-meta mono" style="--i:0">2023 — 2027 · Chennai</p>
+            <h3 class="rv" style="--i:1">B.Tech <i>AI &amp; ML</i></h3>
+            <p class="rv d-org mono" style="--i:2">Vel Tech Rangarajan Dr. Sagunthala R&amp;D Institute</p>
+            <ul>
+              <li class="rv" style="--i:3">CGPA 9.0. Thesis: Gen2 Education System — an adaptive, AI-driven approach to personalised learning.</li>
+              <li class="rv" style="--i:4">Certified: Mendix Rapid Developer (Oct 2024) · Cognizant Technook AI Internship (Apr 2024).</li>
+            </ul>
+            <div class="rv tags" style="--i:5"><span>CGPA 9.0</span><span>Gen2 thesis</span><span>Mendix certified</span></div>
+          </article>
+
+          <article class="detail" id="pane1" role="tabpanel" aria-labelledby="tab1" data-type="Internship">
+            <span class="ghost" aria-hidden="true">2024</span>
+            <p class="rv d-meta mono" style="--i:0">Apr 2024 · Chennai</p>
+            <h3 class="rv" style="--i:1">AI Intern <i>Cognizant</i></h3>
+            <p class="rv d-org mono" style="--i:2">Technook AI Internship Program · On-site</p>
+            <ul>
+              <li class="rv" style="--i:3">Built foundational ML models and practised end-to-end data analysis and model-building workflows on real-world use cases.</li>
+            </ul>
+            <div class="rv tags" style="--i:4"><span>Foundational ML</span><span>Technook program</span></div>
+          </article>
+
+          <article class="detail" id="pane2" role="tabpanel" aria-labelledby="tab2" data-type="Workshop">
+            <span class="ghost" aria-hidden="true">2025</span>
+            <p class="rv d-meta mono" style="--i:0">Feb 2025 · Chennai</p>
+            <h3 class="rv" style="--i:1">Workshop <i>Presenter</i></h3>
+            <p class="rv d-org mono" style="--i:2">AI Tools Workshop · 60+ students</p>
+            <ul>
+              <li class="rv" style="--i:3">Conducted the workshop as resource person, demonstrating practical AI tools and applications.</li>
+            </ul>
+            <div class="rv tags" style="--i:4"><span>60+ students</span><span>AI tools training</span></div>
+          </article>
+
+          <article class="detail" id="pane3" role="tabpanel" aria-labelledby="tab3" data-type="Internship">
+            <span class="ghost" aria-hidden="true">2025</span>
+            <p class="rv d-meta mono" style="--i:0">Jul 2025 · Chennai</p>
+            <h3 class="rv" style="--i:1">AI Intern <i>Rasa.AI Labs</i></h3>
+            <p class="rv d-org mono" style="--i:2">Startup · Adaptive education &amp; robotics · On-site</p>
+            <ul>
+              <li class="rv" style="--i:3">Designed and iterated on AI/ML models for adaptive learning, from data preprocessing and feature engineering to evaluation.</li>
+              <li class="rv" style="--i:4">Built and deployed AI-driven components that improved automation and adaptive-learning efficiency in existing product workflows.</li>
+              <li class="rv" style="--i:5">Collaborated on planning and execution; kept Git version control and structured documentation for team handoff.</li>
+            </ul>
+            <div class="rv tags" style="--i:6"><span>Adaptive learning</span><span>Model development</span><span>Startup pace</span></div>
+          </article>
+
+          <article class="detail" id="pane4" role="tabpanel" aria-labelledby="tab4" data-type="Talk">
+            <span class="ghost" aria-hidden="true">2025</span>
+            <p class="rv d-meta mono" style="--i:0">Aug 2025 · Chennai</p>
+            <h3 class="rv" style="--i:1">Speaker <i>IEEE Conf.</i></h3>
+            <p class="rv d-org mono" style="--i:2">Gen2 Education System</p>
+            <ul>
+              <li class="rv" style="--i:3">Presented an AI-based adaptive learning system: design, methodology and real-world applications.</li>
+            </ul>
+            <div class="rv tags" style="--i:4"><span>Gen2 Education System</span><span>Public talk</span></div>
+          </article>
+
+          <article class="detail on" id="pane5" role="tabpanel" aria-labelledby="tab5" data-type="Research">
+            <span class="ghost" aria-hidden="true">2026</span>
+            <p class="rv d-meta mono" style="--i:0">Aug 2026 — Present · Taiwan</p>
+            <h3 class="rv" style="--i:1">Research Intern <i>TEEP</i></h3>
+            <p class="rv d-org mono" style="--i:2">National Chung Cheng University · On-site</p>
+            <ul>
+              <li class="rv" style="--i:3">Systematic literature review on AI applications in mental health, focused on ADHD detection and intervention.</li>
+              <li class="rv" style="--i:4">Consolidated two paper-tracking datasets into a single structured research tracker.</li>
+              <li class="rv" style="--i:5">Coordinating ADHD- and depression-focused literature strands in a two-person team; performing venue-type classification and publication-year verification, and maintaining a research log.</li>
+            </ul>
+            <div class="rv tags" style="--i:6"><span>ADHD literature review</span><span>NCCU Taiwan</span><span>Cross-border team</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 NUMBERS -->
+<section id="numbers" data-scene="05">
+  <div class="paper" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head"><h2>Proof, <i>in numbers</i></h2><span class="mono">Chapter IV</span></div>
+    <div class="stats">
+      <div class="stat"><div class="big"><span class="cnt" data-to="60">0</span><sup>+</sup></div><h3>Students taught</h3><p>Led an AI Tools workshop as resource person, Feb 2025.</p></div>
+      <div class="stat"><div class="big"><span class="cnt" data-to="2">0</span></div><h3>Papers published</h3><p>Including the IEEE JBHI-format AdaptEval study on Tamil medical NLP.</p></div>
+      <div class="stat"><div class="big"><span class="cnt" data-to="3">0</span></div><h3>Internships</h3><p>Cognizant, Rasa AI Labs and NCCU Taiwan (research).</p></div>
+      <div class="stat"><div class="big"><span class="cnt" data-to="9.0" data-dec="1">0</span></div><h3>CGPA</h3><p>B.Tech, Artificial Intelligence &amp; Machine Learning.</p></div>
+      <div class="stat"><div class="big"><span class="cnt" data-to="99.43" data-dec="2">0</span><sup>%</sup></div><h3>Fake-news accuracy</h3><p>NLP classifier with optimised text preprocessing.</p></div>
+      <div class="stat"><div class="big"><span class="cnt" data-to="5">0</span></div><h3>Systems shipped</h3><p>From edge-AI glasses to an LLM + RAG tutor, plus an open-source evaluation suite.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 STACK -->
+<section id="stack" data-scene="06">
+  <div class="wrap"><div class="sec-head"><h2>The <i>craft</i></h2><span class="mono">Hover &amp; scroll the reel</span></div></div>
+  <div id="stackpin">
+    <div class="reel" id="reel"></div>
+    <div class="reel-end wrap"><div class="reel-hint"><span class="mono">Rows drift with your scroll · skills glow near your cursor</span><span class="mono amber">47 skills · 6 disciplines</span></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" data-scene="06">
+  <img class="contact-photo" src="assets/contact_portrait.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ajay Kumar in a black suit, looking across at the headline">
+  <div class="wrap">
+    <div class="status mono"><i></i>Open to internships &amp; full-time AI/ML roles</div>
+    <h2 id="cth"><span class="ln"><span>Let's build</span></span><span class="ln"><span>something <i>that</i></span></span><span class="ln"><span><i>matters.</i></span></span></h2>
+    <a class="mail" href="mailto:akofficiala10@gmail.com">akofficiala10@gmail.com</a>
+    <div class="cta-row">
+      <a class="btn solid" href="#" id="cv" data-placeholder="cv">Download CV ↓</a>
+      <a class="btn" href="https://www.linkedin.com/in/ajay-kumar-124215372/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/AjayKumar-repo" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <footer><span class="mono">© 2026 Ajay Kumar</span><span class="mono">Fin. — Thanks for watching</span></footer>
+  </div>
+</section>
+</main>
+
+<aside class="player" id="player" data-state="paused" data-muted="0" aria-label="Theme music">
+  <div class="deck" id="deck" role="group" aria-label="Music controls">
+    <span class="deck-title mono">Now playing · PR Show — Launch Video · 0:00–1:00</span>
+    <div class="deck-row">
+      <button class="pbtn" id="pPlay" type="button" aria-label="Play">
+        <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg>
+        <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2h3.2v12H3.5zM9.3 2h3.2v12H9.3z"/></svg>
+      </button>
+      <button class="pbtn" id="pMute" type="button" aria-label="Mute" aria-pressed="false">
+        <svg class="i-vol" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h2.6L8 3v10L4.6 10H2z"/><path d="M10.2 5.6a3.6 3.6 0 010 4.8M11.9 3.9a6 6 0 010 8.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg class="i-mutedx" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h2.6L8 3v10L4.6 10H2z"/><path d="M10.5 6l4 4M14.5 6l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <label class="vol"><span class="sr-only">Volume</span><input id="pVol" type="range" min="0" max="100" value="70"></label>
+    </div>
+    <div class="deck-row seek">
+      <span class="mono" id="pCur">0:00</span>
+      <input id="pSeek" type="range" min="0" max="60" step="0.1" value="0" aria-label="Song timeline">
+      <span class="mono" id="pDur">1:00</span>
+    </div>
+  </div>
+  <button class="deck-toggle" id="pToggle" type="button" aria-expanded="false" aria-controls="deck" aria-label="Music controls">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4h10M3 8h10M3 12h10"/><circle cx="6" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10.5" cy="8" r="1.5" fill="currentColor" stroke="none"/><circle cx="5.5" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg>
+  </button>
+  <span class="disc-hint mono" aria-hidden="true">♪ Play the theme</span>
+  <button class="disc" id="pDisc" type="button" aria-label="Play theme music" aria-pressed="false">
+    <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="30"/><circle class="prg" cx="32" cy="32" r="30"/></svg>
+    <span class="vinyl" aria-hidden="true"></span>
+    <svg class="ico ico-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg>
+    <svg class="ico ico-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2h3.2v12H3.5zM9.3 2h3.2v12H9.3z"/></svg>
+  </button>
+</aside>
+
+<div class="toast" id="toast">CV coming soon</div>
+<!-- deferred: the page (and the loader) paints first; these run in order just before DOMContentLoaded -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script defer src="js/relic.js?v=22"></script>
+<script defer src="js/thumbs.js?v=10"></script>
+<script defer src="js/path.js?v=8"></script>
+<script defer src="js/player.js?v=6"></script>
+<script defer src="js/shatter.js?v=6"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,c){return (c||document).querySelector(s)}, $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  // ---- graceful fallback if CDN fails: show everything
+  var REEL=[
+    ['Core ML / DL',['PyTorch','TensorFlow','Keras','Hugging Face','Scikit-learn','Neural Networks','CNNs','Regression','Classification','Clustering']],
+    ['NLP & Vision',['LLMs','RAG','Text Preprocessing','Sentiment Analysis','Low-resource NLP','Code-mixed NLP','Computer Vision','YOLOv4','OpenCV']],
+    ['Retrieval & Data',['FAISS','ChromaDB','MongoDB','SQL','REST APIs','Feature Engineering','Data Analysis']],
+    ['Programming',['Python','Java','OOP','DSA','Mendix']],
+    ['Research',['Experimental Design','Model Evaluation','Behavioral Testing','Result Analysis','Literature Review','Research Documentation']],
+    ['Tools & Team',['Git','GitHub','Jupyter','Colab','VS Code','Eclipse','Leadership','Collaboration','Project Management','Public Speaking']]
+  ];
+  if(!window.gsap || !window.ScrollTrigger){
+    // scripts failed to load (offline / blocked CDN): show all content statically, no motion
+    document.documentElement.classList.add('nogsap');
+    $('#loader').remove();
+    $$('.ch').forEach(function(e){e.style.transform='none'});
+    $$('.manifesto-txt .w').forEach(function(e){e.style.opacity=1});
+    $$('#cth .ln span').forEach(function(e){e.style.transform='none'});
+    $$('.cnt').forEach(function(el){var d=parseInt(el.dataset.dec||0,10);el.textContent=parseFloat(el.dataset.to).toFixed(d)});
+    var rl=$('#reel');
+    REEL.forEach(function(r,i){
+      var row=document.createElement('div');row.className='reel-row';
+      row.innerHTML='<div class="lab mono">0'+(i+1)+'<b>'+r[0].replace('&','&amp;')+'</b></div><div class="rail"><div class="copy">'+r[1].map(function(w){return '<span class="sk">'+w+'</span>'}).join('')+'</div></div>';
+      rl.appendChild(row);
+    });
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ---- split text
+  $$('[data-split]').forEach(function(el){
+    var t = el.textContent; el.textContent='';
+    t.split('').forEach(function(c){var s=document.createElement('span');s.className='ch';s.textContent=c;el.appendChild(s)});
+  });
+  // manifesto words
+  var mt = $('#mtxt'), frag = document.createDocumentFragment();
+  Array.prototype.slice.call(mt.childNodes).forEach(function(n){
+    var hl = n.nodeType===1;
+    n.textContent.split(/\s+/).filter(Boolean).forEach(function(w){
+      var s=document.createElement('span'); s.className='w'+(hl?' hl':''); s.textContent=w; frag.appendChild(s);
+    });
+  });
+  mt.textContent=''; mt.appendChild(frag);
+  gsap.set('#cth .ln span',{yPercent:110});
+  gsap.set('.ch',{yPercent:110});
+
+  // ---- smooth scroll
+  var lenis = null;
+  if(window.Lenis && !reduce){
+    lenis = new Lenis({duration:1.25,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(function(t){lenis.raf(t*1000)});
+    gsap.ticker.lagSmoothing(0);
+    lenis.stop();
+    $$('a[href^="#"]:not([href="#"])').forEach(function(a){a.addEventListener('click',function(e){var t=$(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:0,duration:2})}})});
+  }
+
+  // ---- loader -> hero intro
+  var counter={v:3}, lnum=$('#lnum');
+  var intro = gsap.timeline({delay:.2});
+  intro.to(counter,{v:0,duration:2.4,ease:'none',onUpdate:function(){lnum.textContent=Math.max(1,Math.ceil(counter.v))}})
+       .to('#lnum,#loader .cap,#loader .ring',{opacity:0,duration:.5},'>-.05')
+       .to('#loader',{yPercent:-100,duration:1.1,ease:'expo.inOut'})
+       .from('#hp',{opacity:0,scale:1.12,duration:2.2,ease:'power3.out'},'<.2')
+       .to('#name .ch',{yPercent:0,duration:1.25,stagger:.05,ease:'expo.out'},'<.15')
+       .from('#eyebrow,#hsub,.scroll-cue,.hero-tag',{opacity:0,y:24,duration:1,stagger:.12,ease:'power3.out'},'<.5')
+       .add(function(){if(lenis)lenis.start();$('#loader').style.display='none';window.dispatchEvent(new Event('intro:done'));setTimeout(function(){var h=$('#relicHint');if(h)h.classList.add('on')},2200)});
+  if(reduce){intro.progress(1)}
+
+  // ---- cursor glow
+  var spot=$('.spot'),spotSeen=false;
+  gsap.set(spot,{x:window.innerWidth*.5,y:window.innerHeight*.4});
+  var spx=gsap.quickTo(spot,'x',{duration:1.1,ease:'power3.out'}),spy=gsap.quickTo(spot,'y',{duration:1.1,ease:'power3.out'});
+  window.addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse')return;
+    if(!spotSeen){spotSeen=true;gsap.set(spot,{x:e.clientX,y:e.clientY});document.documentElement.classList.add('spot-on')}
+    spx(e.clientX);spy(e.clientY);
+  },{passive:true});
+  document.addEventListener('mouseleave',function(){document.documentElement.classList.remove('spot-on');spotSeen=false});
+
+  // ---- hero scroll-out
+  gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}})
+    .to('#hp',{yPercent:14,scale:1.12,opacity:.1,ease:'none'},0)
+    .to('.hero-txt',{yPercent:-22,opacity:0,ease:'none'},0)
+    .to('.scroll-cue,.hero-tag',{opacity:0},0);
+
+  // ---- manifesto
+  gsap.to('.manifesto-txt .w',{opacity:1,stagger:.6,ease:'none',
+    scrollTrigger:{trigger:'#manifesto',start:'top 65%',end:'bottom 70%',scrub:.6}});
+
+  // ---- section colour-field wipes (window-expand transitions)
+  gsap.fromTo('#numbers .wrap',{y:80},{y:0,ease:'none',scrollTrigger:{trigger:'#numbers',start:'top 96%',end:'top 18%',scrub:true}});
+  gsap.fromTo('#manifesto .wrap',{scale:.94,transformOrigin:'50% 0%'},{scale:1,ease:'none',scrollTrigger:{trigger:'#manifesto',start:'top 95%',end:'top 30%',scrub:true}});
+
+  // ---- horizontal work scenes (desktop) / stacked (mobile)
+  var mm = gsap.matchMedia();
+  mm.add('(min-width:901px)',function(){
+    var track=$('#htrack');
+    var dist=function(){return track.scrollWidth-window.innerWidth};
+    var tween=gsap.to(track,{x:function(){return -dist()},ease:'none',
+      scrollTrigger:{trigger:'#hpin',start:'top top',end:function(){return '+='+dist()},pin:true,scrub:.8,invalidateOnRefresh:true,anticipatePin:1}});
+    // keyboard: tabbing to a link in an off-screen scene scrolls the page so that scene slides into view
+    var onSceneFocus=function(e){
+      var sc=e.currentTarget,st=tween.scrollTrigger,d=dist();if(!st||d<=0)return;
+      var x=sc.getBoundingClientRect().left-track.getBoundingClientRect().left-(window.innerWidth-sc.offsetWidth)/2;
+      var y=st.start+(Math.max(0,Math.min(d,x))/d)*(st.end-st.start);
+      if(lenis)lenis.scrollTo(y,{immediate:true,force:true});else window.scrollTo(0,y);
+    };
+    $$('.scene').forEach(function(sc){sc.addEventListener('focusin',onSceneFocus)});
+    $$('.scene').forEach(function(sc,i){
+      if(i===0)return;
+      gsap.fromTo(sc.querySelector('.shot'),{clipPath:'inset(18% 18% 18% 18%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',scrollTrigger:{trigger:sc,containerAnimation:tween,start:'left 96%',end:'left 52%',scrub:true}});
+      gsap.fromTo(sc.querySelector('.info'),{opacity:0,x:60},{opacity:1,x:0,ease:'none',scrollTrigger:{trigger:sc,containerAnimation:tween,start:'left 90%',end:'left 55%',scrub:true}});
+    });
+    return function(){$$('.scene').forEach(function(sc){sc.removeEventListener('focusin',onSceneFocus)})};
+  });
+  mm.add('(max-width:900px)',function(){
+    $$('.scene').forEach(function(s){
+      gsap.from(s,{y:60,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 88%'}});
+    });
+  });
+
+  // ---- section headings
+  $$('.sec-head h2').forEach(function(h){
+    gsap.from(h,{yPercent:40,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}});
+  });
+
+  // ---- counters
+  $$('.cnt').forEach(function(el){
+    var to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||0,10), o={v:0};
+    ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:function(){
+      gsap.to(o,{v:to,duration:2.2,ease:'power3.out',onUpdate:function(){el.textContent=o.v.toFixed(dec)}});
+    }});
+  });
+  gsap.from('.stat',{y:60,opacity:0,stagger:.12,duration:1,ease:'power3.out',scrollTrigger:{trigger:'.stats',start:'top 82%'}});
+
+  // ---- craft reel: multi-row, scroll-driven, cursor-reactive
+  var reel=$('#reel'), rows=[];
+  REEL.forEach(function(r,i){
+    var row=document.createElement('div'); row.className='reel-row';
+    row.innerHTML='<div class="lab mono">0'+(i+1)+'<b>'+r[0].replace('&','&amp;')+'</b></div><div class="rail"></div>';
+    reel.appendChild(row); rows.push({el:row,rail:row.lastChild,words:r[1],dir:i%2?1:-1});
+  });
+  var skEls=[];
+  function buildReel(){
+    var vw=window.innerWidth;
+    rows.forEach(function(r){
+      r.rail.innerHTML='';
+      var mk=function(){var c=document.createElement('div');c.className='copy';r.words.forEach(function(w){var s=document.createElement('span');s.className='sk';s.textContent=w;c.appendChild(s)});return c};
+      var first=mk(); r.rail.appendChild(first);
+      r.copyW=first.getBoundingClientRect().width||1;
+      var n=Math.max(2,Math.ceil(vw*1.5/r.copyW)+1);
+      for(var k=1;k<n;k++)r.rail.appendChild(mk());
+    });
+    skEls=$$('.sk');
+  }
+  var reelTL;
+  function buildReelAnim(){
+    if(reelTL){if(reelTL.scrollTrigger)reelTL.scrollTrigger.kill();reelTL.kill()}
+    var pinOn=window.innerWidth>900;
+    reelTL=gsap.timeline({scrollTrigger:{trigger:'#stackpin',start:pinOn?'top 12%':'top bottom',end:pinOn?'+=140%':'bottom top',pin:pinOn,scrub:.8,invalidateOnRefresh:true}});
+    rows.forEach(function(r){
+      var from=r.dir<0?0:-r.copyW, to=r.dir<0?-r.copyW:0;
+      reelTL.fromTo(r.rail,{x:from},{x:to,ease:'none'},0);
+    });
+    ScrollTrigger.refresh();
+  }
+  var fontsReady=(document.fonts&&document.fonts.ready)?document.fonts.ready:Promise.resolve();
+  fontsReady.then(function(){buildReel();buildReelAnim()});
+  var rz;window.addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){buildReel();buildReelAnim()},250)});
+
+  // velocity skew on the rails
+  var skewSet=rows.map(function(r){return gsap.quickTo(r.rail,'skewX',{duration:.5,ease:'power3'})});
+  ScrollTrigger.create({trigger:'#stack',start:'top bottom',end:'bottom top',onUpdate:function(self){
+    var v=gsap.utils.clamp(-9,9,self.getVelocity()/-220);
+    rows.forEach(function(r,i){skewSet[i](v*(r.dir<0?1:-1))});
+  }});
+
+  // proximity glow around the cursor
+  var raf=0,px=0,py=0,over=false,pr=[];
+  function paint(){
+    raf=0;
+    var vh=window.innerHeight,vw=window.innerWidth,n=skEls.length,i,b;
+    // every rect is read first and styles written afterwards (interleaving them forced a fresh
+    // layout per skill, per frame), and an element is only touched when its glow actually changed
+    for(i=0;i<n;i++){
+      b=skEls[i].getBoundingClientRect();
+      if(b.bottom<0||b.top>vh||b.right<0||b.left>vw){pr[i]=-1;continue}
+      pr[i]=over?Math.max(0,1-Math.hypot(px-(b.left+b.width/2),py-(b.top+b.height/2))/260):0;
+    }
+    for(i=0;i<n;i++){
+      var p=pr[i];if(p<0)continue;
+      var el=skEls[i],q=Math.round(p*100);
+      if(el._q===q)continue;el._q=q;
+      el.style.setProperty('--p',p.toFixed(3));
+      el.style.transform=p>0.02?'scale('+(1+p*.06).toFixed(3)+')':'';
+      el.classList.toggle('hot',p>.82);
+    }
+  }
+  var stEl=$('#stack');
+  stEl.addEventListener('pointermove',function(e){px=e.clientX;py=e.clientY;over=true;if(!raf)raf=requestAnimationFrame(paint)});
+  stEl.addEventListener('pointerleave',function(){over=false;if(!raf)raf=requestAnimationFrame(paint)});
+
+  // CV placeholder
+  var toast=$('#toast'),tt;
+  $('#cv').addEventListener('click',function(e){
+    e.preventDefault();toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},2200);
+  });
+
+  // ---- contact reveal
+  gsap.to('#cth .ln span',{yPercent:0,duration:1.4,stagger:.14,ease:'expo.out',scrollTrigger:{trigger:'#cth',start:'top 78%'}});
+  gsap.from('.contact-photo',{opacity:0,y:70,duration:1.6,ease:'power3.out',clearProps:'transform,opacity',scrollTrigger:{trigger:'#contact',start:'top 70%'}});
+  gsap.from('.cta-row .btn,.status',{y:30,opacity:0,stagger:.1,duration:1,ease:'power3.out',scrollTrigger:{trigger:'.cta-row',start:'top 92%'}});
+
+  // ---- HUD: timecode, progress, scene counter
+  var tc=$('#tc'), prog=$('#prog'), scn=$('#scn'), TOTAL=6*60*24; // fake 06:00 runtime @24fps
+  var scenes=['hero','manifesto','work','path','numbers','stack'];
+  function pad(n){return n<10?'0'+n:''+n}
+  ScrollTrigger.create({start:0,end:'max',onUpdate:function(self){
+    var p=self.progress; prog.style.transform='scaleX('+p+')';
+    var f=Math.floor(p*TOTAL), fr=f%24, s=Math.floor(f/24)%60, m=Math.floor(f/1440);
+    tc.textContent='00:'+pad(m)+':'+pad(s)+':'+pad(fr);
+  }});
+  scenes.forEach(function(id,i){
+    ScrollTrigger.create({trigger:'#'+id,start:'top 50%',end:'bottom 50%',onToggle:function(s){if(s.isActive)scn.textContent=pad(i+1)}});
+  });
+
+  // ---- adaptive lite mode: if the page can't sustain ~35fps, quietly drop the decorative full-screen layers
+  (function(){
+    var root=document.documentElement,ds=[],last=0,armed=false,strikes=0;
+    // wait until the one-off start-up work is over (shader compiles, the music download, first layout of every section);
+    // judging the machine on those frames would switch lite mode on for good on a perfectly capable GPU
+    window.addEventListener('intro:done',function(){setTimeout(function(){armed=true},6000)});
+    document.addEventListener('visibilitychange',function(){last=0;ds=[];strikes=0});
+    (function tick(t){
+      requestAnimationFrame(tick);
+      if(!armed||document.hidden||root.classList.contains('lite')){last=0;return}
+      if(last){var d=t-last;if(d<250)ds.push(d)}last=t;
+      // two slow windows in a row (about 4 s each), so a one-off hitch never decides it
+      if(ds.length>=120){ds.sort(function(a,b){return a-b});var med=ds[60];ds=[];strikes=med>29?strikes+1:0;if(strikes>=2)root.classList.add('lite')}
+    })(0);
+  })();
+
+  window.addEventListener('load',function(){ScrollTrigger.refresh()});
+});
+</script>
+</body>
+</html>

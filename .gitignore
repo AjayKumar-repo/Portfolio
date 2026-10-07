@@ -1,0 +1,16 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# dependencies and build output (none needed: this is a static site)
+node_modules/
+.vercel/
+
+# AI tooling folders that live next to the project but are not part of the site
+.agents/
+.claude/
+.impeccable/
+skills/
+skills-lock.json
